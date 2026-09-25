@@ -50,13 +50,13 @@ int main(){
             std::cout << "Exiting...";
             break;
         }
-
-        if (input == "SCRAMBLE"){
+        else if (input == "SCRAMBLE"){
             int k = 0;
             std::cout << "How much moves to scramble?: ";
             std::cin >> k;
             Scramble(k, cube);
-        } else {performOperation(input, cube);}
+        }
+        else {performOperation(input, cube);}
         
         std::cout << "Cube: " <<std::endl;
         cube.print();

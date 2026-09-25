@@ -141,7 +141,7 @@ void Cube::thirdRowLeft() {
 
     for (int i = 0; i < 3; i++) {
 
-        Color temp = stickers[i + 9 + 3];
+        Color temp = stickers[i + 9 + 6];
 
         stickers[i + 9 + 6] = stickers[i + 18 + 6];
 
@@ -290,18 +290,21 @@ void Cube::secondColumnDown() {
 
 }
 
+//--------------------------------------------------------------------------------------------
+
 void Cube::print() const {
     // Helper lambda to map Color enum to a single character
     auto getChar = [this](int index) -> char {
         switch (stickers[index]) {
             case Color::white:  return 'W';
-            case Color::yellow: return 'Y';
-            case Color::red:    return 'R';
-            case Color::orange: return 'O';
-            case Color::blue:   return 'B';
-            case Color::green:  return 'G';
+            case Color::orange: return 'O'; // Index 1
+            case Color::green:  return 'G'; // Index 2
+            case Color::red:    return 'R'; // Index 3
+            case Color::blue:   return 'B'; // Index 4
+            case Color::yellow: return 'Y'; // Index 5
             default:            return '?';
         }
+
     };
 
     // --- UP FACE (Indices 0 - 8) ---
@@ -343,6 +346,30 @@ void Cube::print() const {
 }
 
 
+/*
+Older isPLLSolved
+bool Cube::isPLLSolved() const {
+    if (!isOLLSolved()) return false;
+
+    //array tracking the start of the bottom row for Left, Front, Right, Back
+    const int sideBottomRows = {15, 24, 33, 42};
+    const int sideCenters = {13, 22, 31, 40};
+
+    // Loop through the 4 side faces
+    for (int i = 0; i < 4; i++) {
+        Color centerColor = stickers[sideCenters[i]];
+        int rowStart = sideBottomRows[i];
+
+        //check the 3 stickers in the bottom row of this face
+        for (int j = 0; j < 3; j++) {
+            if (stickers[rowStart + j] != centerColor) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+*/
 /*
             Older Constructor with O(n2) optimization:
                 //keep count of the sticker from 0-53

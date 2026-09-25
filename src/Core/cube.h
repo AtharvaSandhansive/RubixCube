@@ -4,7 +4,10 @@
 #include <array>
 #include <string>
 #include <iostream>
+#include <sstream>
 
+// Change your enum sequence to match Face order: 
+// 0=UP(W), 1=LEFT(O), 2=FRONT(G), 3=RIGHT(R), 4=BACK(B), 5=DOWN(Y)
 enum class Color : uint8_t {
     white = 0,
     orange = 1,
@@ -13,6 +16,7 @@ enum class Color : uint8_t {
     blue = 4,
     yellow = 5
 };
+
 
 enum class Face : uint8_t {
     UP = 0,
@@ -54,5 +58,7 @@ class Cube{
         void scramble();
         //isSolved
         bool isSolved() const;
+
+
 };
 
