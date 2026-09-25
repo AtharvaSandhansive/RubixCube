@@ -58,7 +58,5 @@ class Cube{
         void scramble();
         //isSolved
         bool isSolved() const;
-
-
 };
 
